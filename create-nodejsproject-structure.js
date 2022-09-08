@@ -50,7 +50,7 @@ const program = new commander.Command(packageJson.name)
     );
     console.log(
       `      ${chalk.cyan(
-        'https://github.com/aditiipriya/create-nodeproject-structure/issues/new'
+        'https://github.com/aditiipriya/create-nodejsproject-structure/issues/new'
       )}`
     );
     console.log();

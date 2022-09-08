@@ -1,15 +1,15 @@
 {
-  "name": "create-nodeproject-structure",
+  "name": "create-nodejsproject-structure",
   "version": "1.1.5",
-  "description": "Initialize a node structure with create-nodeproject-structure",
+  "description": "Initialize a node structure with create-nodejsproject-structure",
   "author": "aditi priya",
   "license": "ISC",
   "bin": {
-    "create-nodeproject-structure": "create-nodeproject-structure.js"
+    "create-nodejsproject-structure": "create-nodejsproject-structure.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aditiipriya/create-nodeproject-structure"
+    "url": "https://github.com/aditiipriya/create-nodejsproject-structure"
   },
   "keywords": [
     "node",
