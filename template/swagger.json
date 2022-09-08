@@ -1,0 +1,718 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "RCSM project structure swagger",
+    "description": "RCSM project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "basePath": "",
+  "tags": [
+    {
+      "name": "User",
+      "description": "API for users in the system",
+      "externalDocs": {
+        "description": "Find out more about our users",
+        "url": ""
+      }
+    },
+    {
+      "name": "Admin",
+      "description": "API for users in the system",
+      "externalDocs": {
+        "description": "Find out more about our admin",
+        "url": ""
+      }
+    }
+  ],
+  "schemes": ["http", "https"],
+  "consumes": [
+    "application/json",
+    "application/x-www-form-urlencoded",
+    "multipart/form-data",
+    "application/octet-stream"
+  ],
+  "produces": ["application/json"],
+  "paths": {
+    "/admin/login": {
+      "post": {
+        "deprecated": false,
+        "tags": ["Admin"],
+        "description": "login",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/admin/forgotPassword":{
+      "post": {
+        "deprecated": false,
+        "tags": ["Admin"],
+        "description": "Forgot Password",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/admin/resetPassword":{
+      "post": {
+        "deprecated": false,
+        "tags": ["Admin"],
+        "description": "Reset password",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newPassword",
+            "in": "formData",
+            "description": "newPassword",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "confirmPassword",
+            "in": "formData",
+            "description": "confirmPassword",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/admin/changePassword":{
+      "post": {
+        "deprecated": false,
+        "tags": ["Admin"],
+        "description": "Change password",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "accessToken",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "oldPassword",
+            "in": "formData",
+            "description": "oldPassword",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newPassword",
+            "in": "formData",
+            "description": "newPassword",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/admin/listUser":{
+        "get": {
+            "deprecated": false,
+            "tags": ["Admin"],
+            "description": "List admin",
+            "consumes": ["application/x-www-form-urlencoded"],
+            "produces": ["application/json"],
+            "parameters": [
+              {
+                "name": "accessToken",
+                "in": "header",
+                "description": "accessToken",
+                "required": true,
+                "type": "string"
+              },
+              {
+                "name": "search",
+                "in": "query",
+                "description": "search by name or email",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successfully"
+              },
+              "401": {
+                "description": "Unauthorized"
+              }
+            },
+            "security": [
+              {
+                "basicAuth": ["Username: ", "Password: "]
+              }
+            ]
+          }  
+    },
+    "/admin/logout":{
+      "post": {
+        "deprecated": false,
+        "tags": ["Admin"],
+        "description": "Delete Profile",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "accessToken",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/admin/changeUserStatus": {
+      "post": {
+        "deprecated": false,
+        "tags": ["Admin"],
+        "description": "login",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "accessToken",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "formData",
+            "description": "userId",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "description":"status 0= inactivate 1=activate",
+            "enum":[0,1],
+            "required":true,
+            "type":"integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/user/register": {
+      "post": {
+        "deprecated": false,
+        "tags": ["User"],
+        "description": "register",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/user/login": {
+      "post": {
+        "deprecated": false,
+        "tags": ["User"],
+        "description": "Login",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/user/listUser":{
+        "get": {
+            "deprecated": false,
+            "tags": ["User"],
+            "description": "List user",
+            "consumes": ["application/x-www-form-urlencoded"],
+            "produces": ["application/json"],
+            "parameters": [
+              {
+                "name": "accessToken",
+                "in": "header",
+                "description": "accessToken",
+                "required": true,
+                "type": "string"
+              },
+              {
+                "name": "search",
+                "in": "query",
+                "description": "search by email or name",
+                "required": false,
+                "type": "string"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successfully"
+              },
+              "401": {
+                "description": "Unauthorized"
+              }
+            },
+            "security": [
+              {
+                "basicAuth": ["Username: ", "Password: "]
+              }
+            ]
+          }  
+    },
+    "/user/forgotPassword":{
+      "post": {
+        "deprecated": false,
+        "tags": ["User"],
+        "description": "Forgot Password",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/user/resetPassword":{
+      "post": {
+        "deprecated": false,
+        "tags": ["User"],
+        "description": "Reset password",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newPassword",
+            "in": "formData",
+            "description": "newPassword",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "confirmPassword",
+            "in": "formData",
+            "description": "confirmPassword",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/user/changePassword":{
+      "post": {
+        "deprecated": false,
+        "tags": ["User"],
+        "description": "Change password",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "accessToken",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "oldPassword",
+            "in": "formData",
+            "description": "oldPassword",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "newPassword",
+            "in": "formData",
+            "description": "newPassword",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/user/updateProfile": {
+      "put": {
+        "deprecated": false,
+        "tags": ["User"],
+        "description": "register",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "accessToken",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "profilePhoto",
+            "in": "formData",
+            "description": "profilePhoto",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "contactNumber",
+            "in": "formData",
+            "description": "contactNumber",
+            "required": false,
+            "type": "number"
+          },          
+          {
+            "name": "country",
+            "in": "formData",
+            "description": "country",
+            "required": false,
+            "type": "string"
+          },          
+          {
+            "name": "state",
+            "in": "formData",
+            "description": "state",
+            "required": false,
+            "type": "string"
+          },          
+          {
+            "name": "city",
+            "in": "formData",
+            "description": "city",
+            "required": false,
+            "type": "string"
+          },          
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "address",
+            "required": false,
+            "type": "string"
+          },          
+          {
+            "name": "bio",
+            "in": "formData",
+            "description": "bio",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "interests",
+            "in":"formData",
+            "description":"interests eg [\"interest1\",\"interest2\"...\"]",
+            "required":false,
+            "type":"string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/user/deleteProfile":{
+      "delete": {
+        "deprecated": false,
+        "tags": ["User"],
+        "description": "Delete Profile",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "accessToken",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    },
+    "/user/logout":{
+      "post": {
+        "deprecated": false,
+        "tags": ["User"],
+        "description": "Logout Profile",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "accessToken",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": ["Username: ", "Password: "]
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  }
+}
